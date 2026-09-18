@@ -2,7 +2,7 @@
 
 A minimal deep learning framework built from scratch in pure NumPy, implementing a reverse-mode automatic differentiation (autograd) engine and a small set of composable neural network layers — no PyTorch, no TensorFlow.
 
-This project extends the scalar-valued autograd engine from Andrej Karpathy's [micrograd](https://github.com/karpathy/micrograd) into a NumPy-backed `Tensor` class with full broadcasting support.
+This project extends the scalar-valued autograd engine from Andrej Karpathy's [micrograd](https://github.com/karpathy/micrograd) into a NumPy-backed `Tensor` class with full broadcasting support. Everything beyond the engine mechanism — the layers, optimizers, loss functions, and overall architecture — was designed and implemented independently.
 
 ## Features
 
