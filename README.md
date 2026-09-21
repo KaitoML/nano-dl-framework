@@ -9,16 +9,16 @@ This project extends the scalar-valued autograd engine from Andrej Karpathy's [m
 - **`Tensor` autograd engine** (`engine.py`) — graph-based reverse-mode autodiff with broadcasting-aware gradients. Supports elementwise arithmetic (`+`, `-`, `*`, `/`), matrix multiplication, `exp`, `log`, `tanh`, `relu`, and shape-reducing ops (`sum`, `mean`, `max`), all traversed via topological-sort `backward()`.
 - **Layers** (`layers.py`) — `Linear`, `BatchNorm1d` (with running statistics for train/eval modes), `Dropout`.
 - **Activations** (`activations.py`) — `ReLU`, `Tanh`.
-- **Model container** (`models.py`) — `Sequential`, for composing layers into a model.
+- **Model container** (`models.py`) — `Sequential`, for composing layers into a model, with a built-in `run_autotraining()` training loop.
 - **Optimizers** (`optimizers.py`) — `SGD`, `Adam` (with bias-corrected moment estimates).
 - **Loss functions** (`functions.py`) — numerically-stable `cross_entropy` (log-sum-exp trick), `softmax`.
 
 ## Validation
 
 The framework was validated by:
-- Numerically gradient-checking every differentiable operation against finite-difference approximations.
-- Training a small classifier to convergence with a proper train/test split (train loss → ~0.003, test loss → ~0.008 over 1000 epochs).
-- A dedicated test suite exercising each layer and activation individually.
+- A dedicated test suite exercising each `Tensor` operation, layer, and activation individually.
+- Training a small classifier to convergence with a proper train/test split.
+- Benchmarking against an equivalent PyTorch implementation (matching architecture, optimizer, and hyperparameters) trained on the real MNIST dataset (via `sklearn.datasets.fetch_openml`) — both implementations reach comparable train/validation cross-entropy loss (~0.2–0.3).
 
 ## Installation
 
@@ -26,7 +26,7 @@ The framework was validated by:
 pip install -r requirements.txt
 ```
 
-Requires Python 3.x. To run `tests.ipynb`, you'll also need Jupyter (or an IDE with notebook support, e.g. PyCharm, VS Code).
+Requires Python 3.x. To run `tests.ipynb`, you'll also need Jupyter (or an IDE with notebook support, e.g. PyCharm, VS Code), plus `scikit-learn` and `torch` for the MNIST/PyTorch comparison section.
 
 ## Usage
 
@@ -55,7 +55,7 @@ loss.backward()
 optimizer.update()
 ```
 
-See `tests.ipynb` for a full walkthrough, including a complete training loop example.
+See `tests.ipynb` for a full walkthrough, including a complete training loop example and a side-by-side comparison against PyTorch on MNIST.
 
 ## Motivation
 
