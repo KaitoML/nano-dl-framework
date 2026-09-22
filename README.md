@@ -64,3 +64,7 @@ Built as a learning exercise to understand what happens "under the hood" of fram
 ## Notes
 
 A handful of NumPy-specific broadcasting/indexing operations (`__getitem__`, `mean`, `sum`, `max`, and the log-sum-exp `cross_entropy`) were built with AI assistance; the autograd core, layer architecture, both optimizers, and bug fixes were implemented independently.
+
+## License
+
+This project is licensed under the MIT License.
