@@ -6,10 +6,10 @@ class Optimizer:
         self.lr = lr
 
     def update(self):
-        raise NotImplementedError('this method is not implemented')
+        raise NotImplementedError(f'update method of {self.__class__.__name__} is not implemented')
 
     def zero_grad(self):
-        raise NotImplementedError('this method is not implemented')
+        raise NotImplementedError(f'zero_grad method of {self.__class__.__name__} is not implemented')
 
 
 class SGD(Optimizer):

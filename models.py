@@ -3,10 +3,10 @@ from functions import cross_entropy, softmax
 
 class Model:
     def __repr__(self):
-        raise NotImplementedError('this method is not implemented')
+        raise NotImplementedError(f'__repr__ method of {self.__class__.__name__} is not implemented')
 
     def __call__(self, x):
-        raise NotImplementedError('this method is not implemented')
+        raise NotImplementedError(f'__call__ method of {self.__class__.__name__} is not implemented')
 
     def parameters(self):
         return []
